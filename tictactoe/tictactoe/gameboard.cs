@@ -1,4 +1,4 @@
-using System;
+﻿namespace tictactoe;
 
 public class GameBoard
 {
