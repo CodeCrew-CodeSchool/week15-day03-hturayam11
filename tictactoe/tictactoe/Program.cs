@@ -1,95 +1,22 @@
-﻿namespace tictactoe;
+﻿using System;
 
 class Program
 {
-
-    static char[,] playField = {
-        {'1','2','3'},
-        {'4','5','6'},
-        {'7','8','9'},
-    };
-
-    static int turns = 0;
-
-    public static void SetField(){
-      Console.Clear();
-      Console.WriteLine("   |     |   ");
-      Console.WriteLine("   {0} |  {1}   | {2} ", playField[0,0],playField[0,1],playField[0,2]);
-      Console.WriteLine("_____|_____|_____");
-      Console.WriteLine("   |     |   ");
-      Console.WriteLine("   {0} |  {1}   | {2} ", playField[0,0],playField[0,1],playField[0,2]);
-      Console.WriteLine("_____|_____|_____");
-      Console.WriteLine("     |     |   ");
-      Console.WriteLine("   {0} |  {1}   | {2} ", playField[0,0],playField[0,1],playField[0,2]);
-      Console.WriteLine("   |     |   ");
-      turns++;  
-    }
-
- do
+    static void Main()
     {
-        Console.WriteLine("\nPlayer {0}: Choose your field!", player);
-        try
-        {
-            input = Convert.ToInt32(Console.ReadLine());
-        }
-        catch
-        {
-            Console.WriteLine("Please enter a number!");
-        }
-        if ((input == 1) && (playField[0, 0] == '1'))
-            inputCorrect = true;
-        else if ((input == 2) && (playfield[0, 1] == '2'))
-            inputCorrect = true;
-        else if ((input == 3) && (playfield[0, 2] == '3'))
-            inputCorrect = true;
-        else if ((input == 4) && (playfield[0, 3] == '4'))
-            inputCorrect = true;
-        else if ((input == 5) && (playfield[0, 4] == '5'))
-            inputCorrect = true;
-        else if ((input == 6) && (playfield[0, 5] == '6'))
-            inputCorrect = true;
-        else if ((input == 8) && (playfield[0, 6] == '8'))
-            inputCorrect = true;
-        else if ((input == 9) && (playfield[0, 1] == '9'))
-            inputCorrect = true;
-        else{
-            Console.WriteLine('\nIncorrect input! Please use another field');
-            inputCorrect = false;
-        }   
-    } while (!inputCorrect);
+        Console.WriteLine("Welcome to Tic-Tac-Toe!");
 
-    public static void EnterXorO(char playerSign, int input)
-    {
-      switch (input)
-      {  
-        case 1: playField[0, 0] = playerSign; break;
-        case 2: playField[0, 1] = playerSign; break;
-        case 3: playField[0, 2] = playerSign; break;
-        case 4: playField[1, 0] = playerSign; break;
-        case 5: playField[1, 1] = playerSign; break;
-        case 6: playField[1, 2] = playerSign; break;
-        case 7: playField[2, 2] = playerSign; break;
-        case 8: playField[2, 1] = playerSign; break;
-        case 9: playField[2, 2] = playerSign; break;
-      }
-    }  
+        Console.Write("Enter name for Player 1: ");
+        string player1Name = Console.ReadLine();
+        Player player1 = new Player(player1Name, "X");
 
-char[] playerChars = { 'X', 'O' };
+        Console.Write("Enter name for Player 2: ");
+        string player2Name = Console.ReadLine();
+        Player player2 = new Player(player2Name, "O");
 
-foreach(char playerChar in playerChars)
-{
-    if(((playField[0, 0] == playerChar) && (playField[0, 1] == playerChar)))
-}
+        Game game = new Game(player1, player2);
+        game.Play();
 
-                        
-
-
-                
-
-
+        Console.WriteLine("Thanks for playing!");
     }
-   // static void Main(string[] args)
-   // {
-        //Console.WriteLine("Hello, World!");
-   // }
 }
